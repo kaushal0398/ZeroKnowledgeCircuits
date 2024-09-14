@@ -32,7 +32,8 @@ async function setUpMongoConnection() {
   const nodesCollection = db.collection<NodeDocument>("nodes");
   nodesCollection.createIndex("digest");
   nodesCollection.createIndex("value");
-  nodesCollection.createIndex(["level", "index"]);
+  await nodesCollection.createIndex({ level: 1, index: 1 });
+
 
   const nodesStatusCollection = db.collection<NodeStatusDocument>("nodes-status");
   let nodeStatus = await nodesStatusCollection.findOne();
@@ -79,7 +80,12 @@ export async function createMerkleTree() {
           if (nodeAtThisIndex) continue;
 
           const leftNode = await nodesCollection.findOne({ level: level - 1, index: index / 2 });
-          const rightNode = await nodesCollection.findOne({ level: level - 1, index: index / 2 + 1 });
+          const leftNodeIndex = Math.floor(index * 2);
+          const rightNodeIndex = leftNodeIndex + 1;
+
+          const leftNode = await nodesCollection.findOne({ level: level - 1, index: leftNodeIndex });
+          const rightNode = await nodesCollection.findOne({ level: level - 1, index: rightNodeIndex });
+
         }
       }
     }
