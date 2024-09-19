@@ -1,6 +1,6 @@
 import { initialize } from "zokrates-js/node";
-import { proveCircuit } from "../prove-circuit";
-import { numToZok } from "../utils/num-to-zok";
+import { proveCircuit } from "../../new/prove-circuit";
+import { numToZok } from "../../new/utils/num-to-zok";
 import pkJSON from "../setup/deposit-circuit/pk.json";
 import programJSON from "../setup/deposit-circuit/program.json";
 import abiJSON from "../setup/deposit-circuit/abi.json";

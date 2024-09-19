@@ -1,5 +1,5 @@
-import { Poseidon } from "../get-poseidon";
-import { hexToBigInt } from "../utils/hex-to-big-int";
+import { Poseidon } from "../../new/get-poseidon";
+import { hexToBigInt } from "../../new/utils/hex-to-big-int";
 
 export interface Account {
   account_digest_preimage_0: bigint;

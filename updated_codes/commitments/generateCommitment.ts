@@ -1,5 +1,5 @@
 import { Account } from "../account";
-import { Poseidon } from "../get-poseidon";
+import { Poseidon } from "../../new/get-poseidon";
 
 interface GenerateCommitmentProps {
   poseidon: Poseidon;
