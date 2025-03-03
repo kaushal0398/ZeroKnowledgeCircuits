@@ -2,7 +2,8 @@ import { Poseidon } from "./get-poseidon";
 
 export function getLevels(poseidon: Poseidon, leafs: bigint[], nrOfDigestsPerDigest: number): bigint[][] {
   const digests = leafs;
-  
+  const levels = [digests];
+  let currentLevel = 0;
   let rootDigestReached = false;
 
   while (rootDigestReached === false) {
